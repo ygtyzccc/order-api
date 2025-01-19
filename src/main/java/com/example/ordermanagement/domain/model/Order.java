@@ -19,6 +19,7 @@ public class Order extends BaseEntity {
     @Column(name = "order_number", nullable = false, unique = true)
     private UUID orderNumber;
 
+    @Getter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -31,6 +32,8 @@ public class Order extends BaseEntity {
     private BigDecimal totalAmount;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Getter
+    @Builder.Default
     private List<OrderItem> items = new ArrayList<>();
 
     public Order addItem(OrderItem item) {

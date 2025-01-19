@@ -21,9 +21,9 @@ public class User extends BaseEntity {
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<Order> orders = new ArrayList<>();
 
-    // Add sync methods
     public User addOrder(Order order) {
         orders.add(order);
         order.setUser(this);
