@@ -1,0 +1,248 @@
+{
+    "info": {
+        "name": "Order Management API",
+        "description": "API collection for Order Management System",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "User Service",
+            "item": [
+                {
+                    "name": "Create User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{user_service_url}}/api/v1/users",
+                            "host": ["{{user_service_url}}"],
+                            "path": ["api", "v1", "users"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"johndoe\",\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password123\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get User by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{user_service_url}}/api/v1/users/1",
+                            "host": ["{{user_service_url}}"],
+                            "path": ["api", "v1", "users", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{user_service_url}}/api/v1/users/1",
+                            "host": ["{{user_service_url}}"],
+                            "path": ["api", "v1", "users", "1"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"firstName\": \"John Updated\",\n    \"lastName\": \"Doe Updated\",\n    \"email\": \"john.updated@example.com\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete User",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{user_service_url}}/api/v1/users/1",
+                            "host": ["{{user_service_url}}"],
+                            "path": ["api", "v1", "users", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Users",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{user_service_url}}/api/v1/users",
+                            "host": ["{{user_service_url}}"],
+                            "path": ["api", "v1", "users"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Order Service",
+            "item": [
+                {
+                    "name": "Create Order",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{order_service_url}}/api/v1/orders",
+                            "host": ["{{order_service_url}}"],
+                            "path": ["api", "v1", "orders"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"userId\": 1,\n    \"items\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 2\n        }\n    ]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get Order by Number",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{order_service_url}}/api/v1/orders/{{order_number}}",
+                            "host": ["{{order_service_url}}"],
+                            "path": ["api", "v1", "orders", "{{order_number}}"]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Order",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{order_service_url}}/api/v1/orders/{{order_number}}/cancel",
+                            "host": ["{{order_service_url}}"],
+                            "path": ["api", "v1", "orders", "{{order_number}}", "cancel"]
+                        }
+                    }
+                },
+                {
+                    "name": "Search Orders",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{order_service_url}}/api/v1/orders/search",
+                            "host": ["{{order_service_url}}"],
+                            "path": ["api", "v1", "orders", "search"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"userId\": 1,\n    \"status\": \"PENDING\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Service",
+            "item": [
+                {
+                    "name": "Create Product",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{product_service_url}}/api/v1/products",
+                            "host": ["{{product_service_url}}"],
+                            "path": ["api", "v1", "products"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Sample Product\",\n    \"description\": \"Product description\",\n    \"price\": 99.99,\n    \"stockQuantity\": 100\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Get Product by ID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{product_service_url}}/api/v1/products/1",
+                            "host": ["{{product_service_url}}"],
+                            "path": ["api", "v1", "products", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Products",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "{{product_service_url}}/api/v1/products",
+                            "host": ["{{product_service_url}}"],
+                            "path": ["api", "v1", "products"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Product Stock",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "{{product_service_url}}/api/v1/products/1/stock?quantity=50",
+                            "host": ["{{product_service_url}}"],
+                            "path": ["api", "v1", "products", "1", "stock"],
+                            "query": [
+                                {
+                                    "key": "quantity",
+                                    "value": "50"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Product",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "{{product_service_url}}/api/v1/products/1",
+                            "host": ["{{product_service_url}}"],
+                            "path": ["api", "v1", "products", "1"]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "user_service_url",
+            "value": "http://localhost:8082"
+        },
+        {
+            "key": "order_service_url",
+            "value": "http://localhost:8081"
+        },
+        {
+            "key": "product_service_url",
+            "value": "http://localhost:8083"
+        }
+    ]
+} 
